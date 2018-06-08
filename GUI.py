@@ -71,6 +71,13 @@ class Calculator:
         self.label_msg.grid(row=5, column=0, sticky=W)
         self.entry_msg.grid(row=5, column=1, sticky=W)
 
+    # when cluster finished lets the user decide if to stay or quit
+    def ChooseEndingDialog(self,text):
+        answer = messagebox.askyesno("Question", text)
+        if answer==False:
+            self.master.quit()
+
+
     #Changing the value of the Message Box on line 6
     def PrintToMessageBox(self, text):
         self.entry_msg.delete(0, END)
@@ -142,7 +149,7 @@ class Calculator:
 
                 self.image1_label.grid(row=6, column=0, sticky=W)
                 self.image2_label.grid(row=6, column=1, sticky=E)
-                self.ShowDialog('Clustering completed successfully!')
+                self.ChooseEndingDialog('Clustering completed successfully! Do you want to stay?')
                 self.PrintToMessageBox('Clustering completed successfully!')
         else:
             self.ShowErrorDialog("You try to cluster without preparation")

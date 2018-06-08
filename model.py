@@ -24,7 +24,7 @@ class model:
         self.setPath(path1)
         self.setClusters(clusters1)
         self.setRuns(run1)
-        self.ReadCsv()
+        self.ReadCsv(self.path)
 
     def setPath(self,path1):
         self.path = path1
