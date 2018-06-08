@@ -24,7 +24,7 @@ class model:
         self.setPath(path1)
         self.setClusters(clusters1)
         self.setRuns(run1)
-        #self.ReadCsv()
+        self.ReadCsv()
 
     def setPath(self,path1):
         self.path = path1
@@ -90,8 +90,6 @@ class model:
         scl = [[0.0, 'rgb(242,240,247)'], [0.2, 'rgb(218,218,235)'], [0.4, 'rgb(188,189,220)'], \
                [0.6, 'rgb(158,154,200)'], [0.8, 'rgb(117,107,177)'], [1.0, 'rgb(84,39,143)']]
 
-
-
         data = [dict(
             type='choropleth',
             colorscale=scl,
@@ -109,7 +107,7 @@ class model:
         )]
 
         layout = dict(
-            title='Clusters by the K-means model for the ',
+            title='Clusters by the K-means model ',
             geo=dict(
                 scope='world',
                 projection=dict(type='natural earth'),

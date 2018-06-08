@@ -89,14 +89,18 @@ class Calculator:
         self.cluster = int(self.entry_clusters.get())
         self.runs = int(self.entry_runs.get())
         m.initBeforePrepare(self.path,self.cluster,self.runs)
-        m.PrepareData()
+
+        # checks if the data is empty
         if len(m.df) == 0:
             self.ShowErrorDialog('You have chosen an empty database')
             self.PrintToMessageBox('Please choose a none empty databse')
+        # check that the values that the user has give are correct
         elif self.cluster < 1 or self.cluster >= len(m.df):
             self.ShowErrorDialog('You have to choose the clusters number in the range: 0 to number of countries')
             self.PrintToMessageBox('Please choose a correct value')
+        # if every thing went well - preparing the data
         else:
+            m.PrepareData()
             self.isPrepareDone = True
             self.cluster_button.configure(state=NORMAL)
             self.ShowDialog('Preprocessing completed successfully!')
@@ -122,6 +126,7 @@ class Calculator:
                 m.KmeansModel()
                 self.ConvertToGif()
 
+                #image 1
                 imgPath1 = r'./name.gif'
                 photo1 = PhotoImage(file=imgPath1)
                 self.image1_label = Label(image=photo1, width='400px', height='400px')
